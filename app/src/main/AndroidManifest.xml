@@ -13,9 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".module.viewstudent.view.StudentActivity"/>
+        <activity android:name=".module.Registration.view.RegistrationActivity"></activity>
+        <activity android:name=".module.addstudent.view.MainActivity" />
+        <activity android:name=".module.viewstudent.view.StudentActivity" />
         <activity
-            android:name=".module.addstudent.view.MainActivity"
+            android:name=".module.Login.view.LoginActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
