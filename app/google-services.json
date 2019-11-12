@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "818083846399",
+    "firebase_url": "https://halogen-trilogy-162317.firebaseio.com",
+    "project_id": "halogen-trilogy-162317",
+    "storage_bucket": "halogen-trilogy-162317.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818083846399:android:0c7687689f3906f67494ca",
+        "android_client_info": {
+          "package_name": "com.friendroid.firebasemvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818083846399-g531nf4ks8qkmt90pj7oja8dt9a3m2q5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.friendroid.firebasemvvm",
+            "certificate_hash": "c56d1202fd9f75c2eddcb46ec2594caa39efa464"
+          }
+        },
+        {
+          "client_id": "818083846399-3rabua4gqlftfgdn6l1b0jka41o2g37j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_hFqnVSF_RoCOqCMs0jRj4AkR_clzZfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818083846399-3rabua4gqlftfgdn6l1b0jka41o2g37j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
