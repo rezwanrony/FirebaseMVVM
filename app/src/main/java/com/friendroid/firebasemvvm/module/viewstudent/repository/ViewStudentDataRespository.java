@@ -1,4 +1,4 @@
-package com.friendroid.firebasemvvm.repository;
+package com.friendroid.firebasemvvm.module.viewstudent.repository;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -6,7 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
-import com.friendroid.firebasemvvm.model.Student;
+import com.friendroid.firebasemvvm.base.basemodel.Student;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDataRespository  {
+public class ViewStudentDataRespository {
 
 
     private List<Student> studentList = new ArrayList<>();
@@ -24,7 +24,7 @@ public class StudentDataRespository  {
     private Context context;
     private DatabaseReference database;
 
-    public StudentDataRespository(Context context) {
+    public ViewStudentDataRespository(Context context) {
         this.context = context;
     }
 

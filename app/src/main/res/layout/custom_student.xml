@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -8,7 +7,7 @@
     <data>
         <variable
             name="student"
-            type="com.friendroid.firebasemvvm.model.Student"/>
+            type="com.friendroid.firebasemvvm.base.basemodel.Student"/>
 
     </data>
 

@@ -1,4 +1,6 @@
-package com.friendroid.firebasemvvm.view;
+package com.friendroid.firebasemvvm.module.viewstudent.view;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -7,21 +9,18 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
 import com.friendroid.firebasemvvm.R;
-import com.friendroid.firebasemvvm.adapter.StudentAdapter;
-import com.friendroid.firebasemvvm.databinding.ActivityMainBinding;
+import com.friendroid.firebasemvvm.base.basemodel.Student;
 import com.friendroid.firebasemvvm.databinding.ActivityStudentBinding;
-import com.friendroid.firebasemvvm.model.Student;
-import com.friendroid.firebasemvvm.viewmodel.StudentViewModel;
+import com.friendroid.firebasemvvm.module.viewstudent.adapter.StudentAdapter;
+import com.friendroid.firebasemvvm.module.viewstudent.viewmodel.ViewStudentViewModel;
 
 import java.util.List;
 
 public class StudentActivity extends AppCompatActivity {
 
 
-    private StudentViewModel viewModel;
+    private ViewStudentViewModel viewModel;
     private StudentAdapter adapter;
     private RecyclerView recyclerView;
     private ActivityStudentBinding mainBinding;
@@ -34,7 +33,7 @@ public class StudentActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        viewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(ViewStudentViewModel.class);
         viewModel.getAllstudentdatafromdb().observe(this, new Observer<List<Student>>() {
             @Override
             public void onChanged(List<Student> students) {

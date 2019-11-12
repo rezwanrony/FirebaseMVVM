@@ -1,4 +1,4 @@
-package com.friendroid.firebasemvvm.adapter;
+package com.friendroid.firebasemvvm.module.viewstudent.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,8 +11,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.friendroid.firebasemvvm.R;
+import com.friendroid.firebasemvvm.base.basemodel.Student;
 import com.friendroid.firebasemvvm.databinding.CustomStudentBinding;
-import com.friendroid.firebasemvvm.model.Student;
 
 import java.util.List;
 
