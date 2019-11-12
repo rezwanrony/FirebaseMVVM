@@ -1,4 +1,4 @@
-package com.friendroid.firebasemvvm.networking;
+package com.friendroid.firebasemvvm.contracts;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -14,6 +14,14 @@ public interface DataRepository {
 
         void addStudent(String id,Student student);
         LiveData<DataSnapshot>getStudentData();
+
+    }
+
+    interface viewstudent{
+
+
+        LiveData<List<Student>> getAllstudentdatafromdb();
+
     }
 
 

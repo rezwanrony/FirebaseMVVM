@@ -5,16 +5,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
+import com.friendroid.firebasemvvm.contracts.DataRepository;
 import com.friendroid.firebasemvvm.model.Student;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Query;
-
-import java.util.List;
 
 public class StudentRepository implements DataRepository.StudentRepo{
 

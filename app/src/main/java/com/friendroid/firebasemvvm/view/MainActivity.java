@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -64,5 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void addStudent(String name,String email,String phone){
         viewModel.addstudentData(new Student(name,email,phone));
+    }
+
+    public void GoStudentList(View view) {
+
+        startActivity(new Intent(MainActivity.this, StudentActivity.class));
     }
 }
