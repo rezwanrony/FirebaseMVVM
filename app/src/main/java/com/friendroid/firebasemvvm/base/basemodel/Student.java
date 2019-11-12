@@ -1,4 +1,4 @@
-package com.friendroid.firebasemvvm.model;
+package com.friendroid.firebasemvvm.base.basemodel;
 
 public class Student {
 
