@@ -33,6 +33,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="70dp"
+                android:layout_height="70dp">
+
+                <ImageView
+                    android:id="@+id/img_FacebookLogin"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:onClick="onClickFacebookButton"
+                    android:src="@drawable/ic_icon_facebook" />
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="OR"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/googleLogin"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_icon_google_plus" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/signuptext"

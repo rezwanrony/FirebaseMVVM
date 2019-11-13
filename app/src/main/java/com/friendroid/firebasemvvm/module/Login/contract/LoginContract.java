@@ -1,9 +1,12 @@
 package com.friendroid.firebasemvvm.module.Login.contract;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.facebook.AccessToken;
 import com.friendroid.firebasemvvm.base.basemodel.Student;
+import com.google.firebase.auth.FirebaseAuth;
 
 public interface LoginContract {
 
@@ -17,6 +20,10 @@ public interface LoginContract {
 
         void gotosignup(View view);
 
+    }
+
+    interface FacebookLogin{
+        void signinwithfacebook(Activity activity,AccessToken accessToken);
     }
 
 
