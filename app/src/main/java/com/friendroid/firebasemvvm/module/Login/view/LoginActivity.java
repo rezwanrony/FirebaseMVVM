@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
     private LoginViewModel viewModel;
     static final int GOOGLE_SIGN_IN = 123;
     GoogleSignInClient mGoogleSigninClient;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
         loginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login);
         viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
+        mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions
                 .Builder()
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -114,6 +116,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
     @Override
     protected void onStart() {
         super.onStart();
-        viewModel.updateUI(this);
+        viewModel.updateUI(this,mAuth);
     }
 }

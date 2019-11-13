@@ -1,7 +1,6 @@
 package com.friendroid.firebasemvvm.module.Login.repository;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
