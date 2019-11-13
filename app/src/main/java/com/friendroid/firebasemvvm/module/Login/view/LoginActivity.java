@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
     private LoginViewModel viewModel;
     private CallbackManager callbackManager;
     private String TAG = "FacebookLogin";
-    FirebaseAuth mAuth;
     static final int GOOGLE_SIGN_IN = 123;
     private GoogleSignInClient mGoogleSigninClient;
     private FirebaseAuth mAuth;
@@ -156,6 +155,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
             }
 
         }
+        else {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @Override
@@ -172,10 +174,5 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode,resultCode,data);
-    }
 
 }

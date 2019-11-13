@@ -20,8 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginViewModel extends AndroidViewModel implements LoginContract.auth ,LoginContract.FacebookLogin{
-public class LoginViewModel extends AndroidViewModel implements LoginContract.auth, LoginContract.googleSignIn {
+public class LoginViewModel extends AndroidViewModel implements LoginContract.auth, LoginContract.googleSignIn,LoginContract.FacebookLogin {
 
     private LoginRepository repository;
     private FacebookLoginRepository facebookrepository;
@@ -41,7 +40,7 @@ public class LoginViewModel extends AndroidViewModel implements LoginContract.au
     }
 
     @Override
-    public void signinwithfacebook(Activity activity,AccessToken accessToken) {
+    public void signinwithfacebook(Activity activity, AccessToken accessToken) {
         facebookrepository.handleFacebookAccessToken(activity,accessToken);
     }
 

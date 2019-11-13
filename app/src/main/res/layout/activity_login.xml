@@ -70,7 +70,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/googleLogin"
+                android:id="@+id/googlesignin"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@drawable/ic_icon_google_plus" />
@@ -84,17 +84,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:text="Dont have account? Sign up"
-            android:layout_height="wrap_content"/>
-
-
-        <Button
-            android:id="@+id/googlesignin"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="Dont have account? Sign up"
-            android:textAllCaps="false"
             android:layout_height="wrap_content"/>
 
 
