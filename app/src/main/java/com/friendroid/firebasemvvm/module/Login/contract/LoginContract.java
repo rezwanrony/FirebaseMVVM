@@ -3,7 +3,8 @@ package com.friendroid.firebasemvvm.module.Login.contract;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.friendroid.firebasemvvm.base.basemodel.Student;
+
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 public interface LoginContract {
 
@@ -16,6 +17,12 @@ public interface LoginContract {
     interface SignUp{
 
         void gotosignup(View view);
+
+    }
+
+    interface googleSignIn {
+
+        void firebaseAuthWithGoogle(GoogleSignInAccount account, ProgressBar progressBar);
 
     }
 
