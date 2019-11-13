@@ -28,6 +28,14 @@ import com.friendroid.firebasemvvm.databinding.ActivityLoginBinding;
 import com.friendroid.firebasemvvm.module.Login.contract.LoginContract;
 import com.friendroid.firebasemvvm.module.Login.viewmodel.LoginViewModel;
 import com.friendroid.firebasemvvm.module.Registration.view.RegistrationActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.security.MessageDigest;
@@ -41,26 +49,42 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
     private CallbackManager callbackManager;
     private String TAG = "FacebookLogin";
     FirebaseAuth mAuth;
+    static final int GOOGLE_SIGN_IN = 123;
+    private GoogleSignInClient mGoogleSigninClient;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login);
+        loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         initialize();
+
+        mAuth = FirebaseAuth.getInstance();
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions
+                .Builder()
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSigninClient = GoogleSignIn.getClient(this, googleSignInOptions);
+
+
         loginBinding.loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = loginBinding.email.getText().toString();
                 String password = loginBinding.password.getText().toString();
-                viewModel.loginCredential(email,password, loginBinding.progressCircular);
+                viewModel.loginCredential(email, password, loginBinding.progressCircular);
             }
         });
 
         loginBinding.signuptext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    gotosignup(v);
+                gotosignup(v);
             }
         });
 
@@ -91,11 +115,53 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
 
     private void initialize() {
         mAuth=FirebaseAuth.getInstance();
+        loginBinding.googlesignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                signInGoogle();
+            }
+        });
+
     }
 
     @Override
     public void gotosignup(View view) {
-        startActivity(new Intent(getApplicationContext(),RegistrationActivity.class));
+        startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
+    }
+
+
+    void signInGoogle() {
+        loginBinding.progressCircular.setVisibility(View.VISIBLE);
+        Intent signInIntent = mGoogleSigninClient.getSignInIntent();
+        startActivityForResult(signInIntent, GOOGLE_SIGN_IN);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GOOGLE_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                if (account != null) {
+                    viewModel.firebaseAuthWithGoogle(account, loginBinding.progressCircular);
+                }
+
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        viewModel.updateUI(this, mAuth);
     }
 
     public void onClickFacebookButton(View view) {
