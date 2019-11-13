@@ -28,14 +28,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
     private ActivityLoginBinding loginBinding;
     private LoginViewModel viewModel;
     static final int GOOGLE_SIGN_IN = 123;
-    GoogleSignInClient mGoogleSigninClient;
+    private GoogleSignInClient mGoogleSigninClient;
     private FirebaseAuth mAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login);
+        loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
         mAuth = FirebaseAuth.getInstance();
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
                 .requestEmail()
                 .build();
 
-        mGoogleSigninClient = GoogleSignIn.getClient(this,googleSignInOptions);
+        mGoogleSigninClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
 
         loginBinding.loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -53,14 +53,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
             public void onClick(View v) {
                 String email = loginBinding.email.getText().toString();
                 String password = loginBinding.password.getText().toString();
-                viewModel.loginCredential(email,password, loginBinding.progressCircular);
+                viewModel.loginCredential(email, password, loginBinding.progressCircular);
             }
         });
 
         loginBinding.signuptext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    gotosignup(v);
+                gotosignup(v);
             }
         });
 
@@ -76,12 +76,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
 
     @Override
     public void gotosignup(View view) {
-        startActivity(new Intent(getApplicationContext(),RegistrationActivity.class));
+        startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
     }
 
 
-    void signInGoogle()
-    {
+    void signInGoogle() {
         loginBinding.progressCircular.setVisibility(View.VISIBLE);
         Intent signInIntent = mGoogleSigninClient.getSignInIntent();
         startActivityForResult(signInIntent, GOOGLE_SIGN_IN);
@@ -92,21 +91,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == GOOGLE_SIGN_IN)
-        {
+        if (requestCode == GOOGLE_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
 
-            try
-            {
+            try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                if (account != null)
-                {
-                    viewModel.firebaseAuthWithGoogle(account,loginBinding.progressCircular);
+                if (account != null) {
+                    viewModel.firebaseAuthWithGoogle(account, loginBinding.progressCircular);
                 }
 
-            }
-            catch (ApiException e)
-            {
+            } catch (ApiException e) {
                 e.printStackTrace();
             }
 
@@ -116,6 +110,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Si
     @Override
     protected void onStart() {
         super.onStart();
-        viewModel.updateUI(this,mAuth);
+        viewModel.updateUI(this, mAuth);
     }
 }

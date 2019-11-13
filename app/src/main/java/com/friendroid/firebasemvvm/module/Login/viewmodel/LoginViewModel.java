@@ -39,8 +39,8 @@ public class LoginViewModel extends AndroidViewModel implements LoginContract.au
         googleLoginRepository.firebaseAuthWithGoogle(account, progressBar);
     }
 
-    public void updateUI(Activity activity,FirebaseAuth mAuth) {
-
+    @Override
+    public void updateUI(Activity activity, FirebaseAuth mAuth) {
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
         if (firebaseUser != null) {
             activity.startActivity(new Intent(activity, MainActivity.class));
